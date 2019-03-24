@@ -29,10 +29,16 @@ class GoogleSearchPageTests(unittest.TestCase):
         google_search_page.navigate_to_insecure_page()
         google_search_page.wait_for_page_to_load()
         self.assertTrue(google_search_page.did_successfully_load_page()) 
-        #google_search_page._tap_to_place_cursor_in_search_field()       
-        time.sleep(5)
+        
+    def test_perform_sample_search_and_verify_link_in_result(self):
+        google_search_page = GoogleSearchPage(self.driver)
+        google_search_page.navigate_to_page()
+        google_search_page.wait_for_page_to_load()
+        google_search_page.perform_search_for_text("mobile integration workgroup")
+        self.assertTrue("https://miwtech.com" in google_search_page.get_first_result_http_link(), "did not find {} in {}".format("https://miwtech.com", google_search_page.get_first_result_http_link()))
 
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(GoogleSearchPageTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
+

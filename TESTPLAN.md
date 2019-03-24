@@ -12,9 +12,13 @@
 
 ## Test Performing Search on Google.com Website
 * search for a specific text string, verify initial result is link to specific website
+* TO DO: potentially, extend test to pull test data from file
 
 
 ## Test of AOL Mail App
 * log in to user account
 * test composing and sending email
 * test receiving email
+
+
+

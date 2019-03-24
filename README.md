@@ -27,3 +27,4 @@ loading google search page
 
 -- I have punted here on localiztion.  The tests and page objects would need to be extended to accomodate loading different regional variations of the page (e.g. the Voice Search button that appears on the right hand side of the search box, is absent from the Canadian French version of the page.)
 
+

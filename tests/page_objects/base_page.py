@@ -91,3 +91,6 @@ class BasePage(ABC):
     def did_successfully_load_page(self):
         """ should return true, will raise error if any item not present on page """
         pass
+
+
+        
