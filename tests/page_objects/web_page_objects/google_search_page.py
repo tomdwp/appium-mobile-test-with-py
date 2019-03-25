@@ -1,8 +1,6 @@
 
 from appium.webdriver.common.mobileby import MobileBy
 from page_objects.base_page import BasePage
-from appium.webdriver.common.touch_action import TouchAction
-
 
 
 class GoogleSearchPage(BasePage):

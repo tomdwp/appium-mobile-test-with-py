@@ -1,19 +1,14 @@
 
-
-import unittest, time
+import unittest
 from appium import webdriver
 from page_objects.web_page_objects.google_search_page import GoogleSearchPage
+from page_objects.util import Util
 
 
 class GoogleSearchPageTests(unittest.TestCase):
     def setUp(self):
-        desired_caps = {
-            'platformName': 'ANDROID',
-            'automationName': 'UiAutomator2',
-            'deviceName': 'Pixel 2 API Q',
-            'browserName': 'Chrome'
-        }
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        desired_capabilities = Util.read_desired_capabilities_data('desired_capabilities_google.json')
+        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_capabilities)
 
     def tearDown(self):
         self.driver.quit()

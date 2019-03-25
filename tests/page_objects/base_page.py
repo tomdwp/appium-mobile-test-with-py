@@ -1,10 +1,12 @@
 
+
 from abc import ABC, abstractmethod
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from appium.webdriver.common.touch_action import TouchAction
 
 class BasePage(ABC):
     """ page object base page with common methods """
@@ -32,6 +34,11 @@ class BasePage(ABC):
 
     def _click(self, locator):
         self._find(locator).click()
+
+    def _tap(self, locator):
+        actions = TouchAction(self.driver)
+        actions.tap(self._find(locator))
+        actions.perform()
 
     def _type(self, locator, input_text):
         self._find(locator).send_keys(input_text)
@@ -91,6 +98,10 @@ class BasePage(ABC):
     def did_successfully_load_page(self):
         """ should return true, will raise error if any item not present on page """
         pass
+    
+    
 
 
-        
+
+
+

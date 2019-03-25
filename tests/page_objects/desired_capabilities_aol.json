@@ -1,0 +1,10 @@
+{
+    "platformName": "ANDROID",
+    "automationName": "UiAutomator2",
+    "deviceName": "Pixel 2 API Q",
+    "newCommandTimeout": 240,
+    "app": "/Users/tomd/repos/appium-mobile-test-with-py/tests/test_apps/com.aol.mobile.aolapp_5.6.5-2101_minAPI19.apk",
+    "appPackage": "com.aol.mobile.aolapp",
+    "appActivity": "com.aol.mobile.aolapp.ui.activity.SplashScreenActivity",
+    "noResetValue": "false"
+}

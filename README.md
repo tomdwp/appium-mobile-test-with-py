@@ -14,17 +14,33 @@
 6. install the needed packages: `pip install -r requirements.txt`
 
 
-## Run 1st Test Case -- Load Google.com Website
+## Run 1st and 2nd Test Case -- Load Google.com Webpage and Perform Search
 In terminal windows with the virtual environment activated:
 1. run this command: `python google_search_page_test.py -v`
 
+## Run 3rd Test Case -- AOL Mail App
+In terminal windows with the virtual environment activated:
+1. run this command: `python aol_mail_app_test.py -v`
 
 
-loading google search page
--- could add the voice search button and the google search button as locators on the field -- but these web elements did not have clean and reliable attributes to build robust locators from, so I left them out.  The `aria-label` is likely constant so could be used to build an xpath locator but this value will vary based on the user's language preference, so is not a great candidate to build off of.
+# Commentary 
 
--- assuming that the correct page to load is the https page.  adding tests that check that the https page is the one returned -- regardless of whether the http page or the https page was requested.
+## Overall
 
--- I have punted here on localiztion.  The tests and page objects would need to be extended to accomodate loading different regional variations of the page (e.g. the Voice Search button that appears on the right hand side of the search box, is absent from the Canadian French version of the page.)
+Desired Capability needs to be improved and loaded in a way that is more platform independent -- so that it can run on any developer's machine, on Sauce Labs, or BrowserStack without needing to modify the desired capabilities files.
 
+For now, please review the two desired capability JSON file, and tweak as neede for your system.
 
+## Commentary on Loading Google.com Website Test
+
+As far as loading the Google search page, in the future I could ad voice search button and a few other elements that did not have clean and reliable attributes to build robust locators from, so I left them out.  The `aria-label` is likely constant so could be used to build an xpath locator but this value will vary based on the user's language preference, so is not a great candidate to build off of.
+
+Note that for the purposes of this exercise, I have left out tackling localiztion.  The tests and page objects would need to be extended to accomodate loading different regional variations of the page (e.g. the Voice Search button that appears on the right hand side of the search box, is absent from the Canadian French version of the page.)
+
+## Commentary on Performing Google Search Test
+
+This is the standard search test of Google.  In the future we could add support for signed in versus not-signed in users.
+
+## Commentary on AOL Mail App Test
+
+This test is only partially done currently.  I rearched the point of loading the Aol signin page for mail -- but currently I'm getting an error message stating to `make sure the app has its WebView configured for debugging` -- which I believe is caused by my using an off-the-shelf .apk file that was not explicitly mean for testing.  

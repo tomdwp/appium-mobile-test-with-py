@@ -1,0 +1,6 @@
+{
+    "platformName": "ANDROID",
+    "automationName": "UiAutomator2",
+    "deviceName": "Pixel 2 API Q",
+    "browserName": "Chrome"
+}
