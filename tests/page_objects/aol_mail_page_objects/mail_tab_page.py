@@ -46,7 +46,7 @@ class MailTabPage(BasePage):
         pass
 
     def wait_for_page_to_load(self, timeout=10):
-        return self._wait_for_is_displayed(self._mailbox_folders_hamburger_menu_locator, timeout)
+        return self._wait_for_is_displayed(self._compose_button_locator, timeout)
 
     def wait_for_signin_modal_page_to_load(self, timeout=10):
         return self._wait_for_is_displayed(self._close_signin_modal_button_locator, timeout)
@@ -69,6 +69,7 @@ class MailTabPage(BasePage):
             self._wait_for_is_displayed(self._signin_username_text_field_locator)
             self._find(self._signin_username_text_field_locator).send_keys(username)
             self._find(self._signin_username_button_locator).click()
+            self._wait_for_is_displayed(self._signin_password_text_field_locator)
             self._find(self._signin_password_text_field_locator).send_keys(password)
             self._find(self._signin_password_button_locator).click()
             self._switch_out_of_webview_frame()

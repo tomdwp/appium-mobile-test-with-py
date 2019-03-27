@@ -12,7 +12,9 @@ class HomeTabPage(BasePage):
         super(HomeTabPage, self).__init__(driver)
         self._main_app_page_locators = []
         # locator(s) on initial page  -- {"by": MobileBy.ID, "value": ""}
-        
+
+        #splash screen locator
+        self._splash_screen_skip_button_locator = {"by": MobileBy.ID, "value": "com.aol.mobile.aolapp:id/fte_skip_button"}
         
     
     @property
@@ -24,6 +26,8 @@ class HomeTabPage(BasePage):
         pass #self._visit(self._page_url)
 
     def wait_for_page_to_load(self):
+        if self._is_displayed(self._splash_screen_skip_button_locator):
+            self._find(self._splash_screen_skip_button_locator).click()
         return self._wait_for_is_displayed(self.tab_bar.mail_locator)
 
     def did_successfully_load_page(self):
