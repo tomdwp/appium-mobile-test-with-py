@@ -13,6 +13,7 @@ class AolMailAppTests(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close_app()
+        self.driver.remove_app('com.aol.mobile.aolapp');
         self.driver.quit()
 
     def test_app_on_initial_launch(self):

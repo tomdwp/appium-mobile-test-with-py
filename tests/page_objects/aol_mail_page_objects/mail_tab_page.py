@@ -19,9 +19,19 @@ class MailTabPage(BasePage):
         self._mail_tab_page_locators.append(self._compose_button_locator)
 
         ## locators for signin modal
-        self._close_signin_modal_button_locator = {"by": MobileBy.ID, "value": "com.android.chrome:id/close_button"}
-        
+        #self._close_signin_modal_button_locator = {"by": MobileBy.ID, "value": "com.android.chrome:id/close_button"}
+        self._close_signin_modal_button_locator = {"by": MobileBy.ACCESSIBILITY_ID, "value": "Navigate up"}
+        self._signin_toolbar_locator = {"by": MobileBy.ID, "value": "com.aol.mobile.aolapp:id/toolbar"}
+
         ## locators for username signin webview 
+        ### whole frame:  com.aol.mobile.aolapp:id/action_bar_root
+        ### sub-frame that's about the same: android:id/content
+        ### top_bar:  com.aol.mobile.aolapp:id/toolbar
+        ##
+        ### webview -- xpath:  /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView
+        ### login webview inside webview -- xpath:  /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView
+
+        ### view enclosing the signin text field -- id:  username-country-code-field
         self._signin_username_text_field_locator = {"by": MobileBy.ID, "value": "login-username"}
         self._signin_username_button_locator = {"by": MobileBy.ID, "value": "login-signin"}
 
@@ -56,10 +66,15 @@ class MailTabPage(BasePage):
         return True 
 
     def _switch_to_webview_frame(self):
-        self.driver.switch_to.context('WEBVIEW_chrome')
+        contexts = self.driver.contexts
+        print("\ncontexts: {}".format(contexts))
+        for el in self.driver.find_elements_by_xpath("//*"):
+            print(el)
+        self.driver.switch_to.context(contexts[-1])
 
     def _switch_out_of_webview_frame(self):
-        self.driver.switch_to.context('NATIVE_APP')
+        contexts = self.driver.contexts
+        self.driver.switch_to.context(contexts[0])
 
     def signin_to_mail(self, username, password):
         """sign into mail account - must already have waited for signin modal page to load"""
