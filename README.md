@@ -43,4 +43,4 @@ This is the standard search test of Google.  In the future we could add support 
 
 ## Commentary on AOL Mail App Test
 
-This test is only partially done currently.  I rearched the point of loading the Aol signin page for mail -- but currently I'm getting an error message stating to `make sure the app has its WebView configured for debugging` -- which I believe is caused by my using an off-the-shelf .apk file that was not explicitly mean for testing.  
+This test is only partially done currently.  I rearched the point of loading the AOL signin page for mail from the MailTabPage page object -- but I'm not able to access the locators in the embedded webview that appears on first run.  Ideally I probably would have liked to separate out the Signin page with its webview as its own page object -- but until I got it working I wasn't sure if that would be appropriate or necessary.  

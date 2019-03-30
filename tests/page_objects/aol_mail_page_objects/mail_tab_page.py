@@ -23,13 +23,16 @@ class MailTabPage(BasePage):
         self._close_signin_modal_button_locator = {"by": MobileBy.ACCESSIBILITY_ID, "value": "Navigate up"}
         self._signin_toolbar_locator = {"by": MobileBy.ID, "value": "com.aol.mobile.aolapp:id/toolbar"}
 
-        ## locators for username signin webview 
-        ### whole frame:  com.aol.mobile.aolapp:id/action_bar_root
-        ### sub-frame that's about the same: android:id/content
-        ### top_bar:  com.aol.mobile.aolapp:id/toolbar
+        ## locators for username signin webview  
+        ### whole frame:  com.aol.mobile.aolapp:id/action_bar_root  --  {"by": MobileBy.ID, "value": "com.aol.mobile.aolapp:id/action_bar_root"}          
+        ### sub-frame that's about the same: android:id/content     -- {"by": MobileBy.ID, "value": "android:id/content"}
+        ### top_bar:  com.aol.mobile.aolapp:id/toolbar              {"by": MobileBy.ID, "value": "com.aol.mobile.aolapp:id/toolbar"}
         ##
         ### webview -- xpath:  /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView
+        #       {"by": MobileBy.XPATH, "value": "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView"}
+        
         ### login webview inside webview -- xpath:  /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView
+        #       {"by": MobileBy.XPATH, "value": "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView"}
 
         ### view enclosing the signin text field -- id:  username-country-code-field
         self._signin_username_text_field_locator = {"by": MobileBy.ID, "value": "login-username"}
@@ -67,9 +70,9 @@ class MailTabPage(BasePage):
 
     def _switch_to_webview_frame(self):
         contexts = self.driver.contexts
-        print("\ncontexts: {}".format(contexts))
-        for el in self.driver.find_elements_by_xpath("//*"):
-            print(el)
+        # print("\ncontexts: {}".format(contexts))
+        # for el in self.driver.find_elements_by_xpath("//*"):
+        #     print(el)
         self.driver.switch_to.context(contexts[-1])
 
     def _switch_out_of_webview_frame(self):
