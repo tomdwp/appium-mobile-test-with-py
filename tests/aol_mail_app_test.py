@@ -13,7 +13,7 @@ class AolMailAppTests(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close_app()
-        self.driver.remove_app('com.aol.mobile.aolapp');
+        self.driver.remove_app('com.aol.mobile.aolapp')
         self.driver.quit()
 
     def test_app_on_initial_launch(self):
@@ -26,7 +26,6 @@ class AolMailAppTests(unittest.TestCase):
         mail_tab_page.signin_to_mail('miw_mobile@aol.com', 'M0bil3@123')
         mail_tab_page.wait_for_page_to_load()
         self.assertTrue(mail_tab_page.did_successfully_load_page())
-        time.sleep(7)
 
         
     

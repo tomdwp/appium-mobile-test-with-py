@@ -15,12 +15,16 @@
 
 
 ## Run 1st and 2nd Test Case -- Load Google.com Webpage and Perform Search
-In terminal windows with the virtual environment activated:
-1. run this command: `python google_search_page_test.py -v`
+In terminal window with the virtual environment activated:
+1. run this command: `python tests/google_search_page_test.py -v`
 
 ## Run 3rd Test Case -- AOL Mail App
-In terminal windows with the virtual environment activated:
-1. run this command: `python aol_mail_app_test.py -v`
+In terminal window with the virtual environment activated:
+1. run this command: `python tests/aol_mail_app_test.py -v`
+
+## Run All Tests
+In the terminal window with the virtual environment activated:
+1. run this command:  `python -m unittest discover -s tests -p "*_test.py" -v`
 
 
 # Commentary 
